@@ -110,9 +110,10 @@
         if ($('#clstr_a').length === 0) {
 
             // don't concat the following link and it will not jump to the elaborate datasite
-            var link = '<a id="clstr_a" href="#" onclick="js_method();return false;">';
-            
-            var container = $('<div class="clstrm_outer">' + // + link + 
+            // var link = '<a id="clstr_a" href="#" onclick="js_method();return false;">';
+            var link = '<a id="clstr_a"  href="//clustrmaps.com">';
+
+            var container = $('<div class="clstrm_outer">'  + link + 
                               '<div class="clstrm_inner">' +
                               '<span id="tooltiper"></span>' +
                               '<div class="clstrm_globe">' +
@@ -134,17 +135,11 @@
                               '</div>' +
                               '</a></div>');
 
-            console.log(container)
             if (embed_after_script) {
                 container.insertAfter(script_el);
             } else {
                 container.appendTo($('body'));
             }
-
-            console.log(container)
-
-
-
 
 
 
@@ -464,6 +459,13 @@
                 counterCode();
             });
         }
+
+        // don't jump to the elaborate datasite
+        document.querySelector(".clstrm_outer").addEventListener("click", function(e) {
+        e.preventDefault();
+        });
+
+        
     }
 
     function initVelocity() {
